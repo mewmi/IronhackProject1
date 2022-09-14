@@ -1,0 +1,16 @@
+html,
+body {
+  width: 99%;
+  height: 99%;
+}
+
+body {
+  background-color: rgb(215, 161, 83);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+canvas {
+  box-shadow: 10px 10px 15px black;
+}
