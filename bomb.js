@@ -1,10 +1,13 @@
+const bombImage = new Image();
+bombImage.src = "img/bomb64.png";
+
 class Bomb {
   constructor(game, x, y) {
     this.game = game;
     this.x = x;
     this.y = y;
-    this.width = 10;
-    this.height = 10;
+    this.width = 24;
+    this.height = 24;
   }
 
   dissapear() {
@@ -13,7 +16,12 @@ class Bomb {
   }
 
   draw() {
-    this.game.context.fillStyle = "purple";
-    this.game.context.fillRect(this.x, this.y, this.width, this.height);
+    this.game.context.drawImage(
+      bombImage,
+      this.x,
+      this.y,
+      this.height,
+      this.width
+    );
   }
 }

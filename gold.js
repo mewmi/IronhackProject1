@@ -1,3 +1,6 @@
+const goldImage = new Image();
+goldImage.src = "img/GoldCoinSpinning.png";
+
 class Gold {
   constructor(game) {
     this.game = game;
@@ -35,7 +38,16 @@ class Gold {
   }
 
   draw() {
-    this.game.context.fillStyle = "yellow";
-    this.game.context.fillRect(this.x, this.y, this.width, this.height);
+    this.game.context.drawImage(
+      goldImage,
+      8 * (Math.floor(this.game.frame / 3) % 6),
+      0,
+      8,
+      8,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );
   }
 }

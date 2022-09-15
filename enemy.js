@@ -1,10 +1,13 @@
+const enemyRunImage = new Image();
+enemyRunImage.src = "img/DinoSprites - mort.png";
+
 class Enemy {
   constructor(game) {
     this.game = game;
     this.x = -44;
     this.y = 595;
-    this.width = 20;
-    this.height = 30;
+    this.width = 36;
+    this.height = 36;
     this.direction = "right";
   }
   checkInter(item) {
@@ -22,7 +25,7 @@ class Enemy {
   }
   runLogic() {
     this.direction = "right";
-    // change position depending on direction
+
     if (this.direction === "right") {
       this.x += 1;
     }
@@ -38,8 +41,6 @@ class Enemy {
     if (this.direction === "down") {
       this.y += 1;
     }
-
-    // this.x += 1;
 
     const isIntWithPlayer = this.checkInter(this.game.player);
     if (isIntWithPlayer) {
@@ -59,7 +60,16 @@ class Enemy {
     }
   }
   draw() {
-    this.game.context.fillStyle = "red";
-    this.game.context.fillRect(this.x, this.y, this.width, this.height);
+    this.game.context.drawImage(
+      enemyRunImage,
+      24 * (Math.floor(this.game.frame / 3) % 6),
+      0,
+      24,
+      24,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );
   }
 }

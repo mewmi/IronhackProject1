@@ -14,6 +14,8 @@ class Game {
     console.log(this.score);
     console.log(this.money);
     this.isRunning = false;
+
+    this.frame = 0;
   }
 
   enableControls() {
@@ -67,6 +69,7 @@ class Game {
   }
 
   draw() {
+    this.frame++;
     this.context.clearRect(0, 0, 1000, 720);
     this.player.draw();
     for (const enemy of this.enemies) {
