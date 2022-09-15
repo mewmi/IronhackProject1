@@ -26,7 +26,7 @@ class Gold {
   runLogic() {
     const isIntPlayer = this.checkIntersection(this.game.player);
     if (isIntPlayer) {
-      this.game.money += 5;
+      this.game.money += 8;
       this.dissapear();
     }
     for (const enem of this.game.enemies) {

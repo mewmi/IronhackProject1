@@ -9,12 +9,10 @@ class Game {
     this.bombs = [];
     this.enableControls();
 
-    this.money = 5;
-    this.score = 0;
-    console.log(this.score);
-    console.log(this.money);
-    this.isRunning = false;
+    this.money = 75;
+    this.score = 20;
 
+    this.isRunning = false;
     this.frame = 0;
   }
 
@@ -22,32 +20,38 @@ class Game {
     window.addEventListener("keydown", (event) => {
       switch (event.code) {
         case "KeyW":
-          this.player.y -= 5;
+          this.player.y -= 9;
           break;
         case "KeyS":
-          this.player.y += 5;
+          this.player.y += 9;
           break;
         case "KeyD":
-          this.player.x += 5;
+          this.player.x += 9;
           break;
         case "KeyA":
-          this.player.x -= 5;
+          this.player.x -= 9;
           break;
         case "Space":
           this.placeBomb();
-          this.money -= 10;
           break;
       }
     });
   }
 
   placeBomb() {
-    const bomb = new Bomb(this, this.player.x, this.player.y);
-    this.bombs.push(bomb);
+    if (this.money >= 10) {
+      const bomb = new Bomb(
+        this,
+        this.player.x,
+        this.player.y + this.player.height / 2
+      );
+      this.bombs.push(bomb);
+      this.money -= 10;
+    }
   }
 
   possiblyAddEnemy() {
-    if (Math.random() < 0.01) {
+    if (Math.random() < 0.007) {
       this.enemies.push(new Enemy(this));
     }
   }
@@ -68,6 +72,17 @@ class Game {
     }
   }
 
+  drawScore() {
+    this.context.font = "32px sans-serif";
+    this.context.fillStyle = "black";
+    this.context.fillText(this.score, 60, 30);
+  }
+  drawMoney() {
+    this.context.font = "32px sans-serif";
+    this.context.fillStyle = "yellow";
+    this.context.fillText(this.money, 130, 30);
+  }
+
   draw() {
     this.frame++;
     this.context.clearRect(0, 0, 1000, 720);
@@ -81,6 +96,8 @@ class Game {
     for (const bomb of this.bombs) {
       bomb.draw();
     }
+    this.drawScore();
+    this.drawMoney();
   }
 
   start() {
