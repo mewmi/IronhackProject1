@@ -8,7 +8,6 @@ class Enemy {
     this.y = 595;
     this.width = 36;
     this.height = 36;
-    this.direction = "right";
   }
   checkInter(item) {
     return (
@@ -24,8 +23,6 @@ class Enemy {
     this.game.enemies.splice(index, 1);
   }
   runLogic() {
-    this.direction = "right";
-
     if (this.direction === "right") {
       this.x += 1;
     }
@@ -40,6 +37,46 @@ class Enemy {
 
     if (this.direction === "down") {
       this.y += 1;
+    }
+    if (this.x == -44 && this.y == 595) {
+      this.direction = "right";
+    } else if (this.x == 368 && this.y == 595) {
+      this.direction = "up";
+    } else if (this.x == 368 && this.y == 437) {
+      this.direction = "right";
+    } else if (this.x == 486 && this.y == 437) {
+      this.direction = "down";
+    } else if (this.x == 486 && this.y == 595) {
+      this.direction = "right";
+    } else if (this.x == 885 && this.y == 595) {
+      this.direction = "up";
+    } else if (this.x == 885 && this.y == 476) {
+      this.direction = "left";
+    } else if (this.x == 604 && this.y == 476) {
+      this.direction = "up";
+    } else if (this.x == 604 && this.y == 320) {
+      this.direction = "left";
+    } else if (this.x == 170 && this.y == 320) {
+      this.direction = "up";
+    } else if (this.x == 170 && this.y == 200) {
+      this.direction = "left";
+    } else if (this.x == 90 && this.y == 200) {
+      this.direction = "up";
+    } else if (this.x == 90 && this.y == 78) {
+      this.direction = "right";
+    } else if (this.x == 367 && this.y == 78) {
+      this.direction = "down";
+    } else if (this.x == 367 && this.y == 237) {
+      this.direction = "right";
+    } else if (this.x == 727 && this.y == 237) {
+      this.direction = "down";
+    } else if (this.x == 727 && this.y == 355) {
+      this.direction = "right";
+    } else if (this.x == 862 && this.y == 355) {
+      this.direction = "up";
+    } else if (this.x == 862 && this.y == 150) {
+      this.dissapear();
+      this.game.score -= 1;
     }
 
     const isIntWithPlayer = this.checkInter(this.game.player);
