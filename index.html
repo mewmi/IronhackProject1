@@ -4,17 +4,50 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project 1 Game</title>
+    <title>Desert City Defence</title>
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <canvas
-      width="1000"
-      height="720"
-      style="background: url(./img/game\ map.png)"
-      id="canvas"
-    ></canvas>
+    <h1 id="title">DESERT CITY DEFENSE</h1>
+    <div id="start-screen" class="screen">
+      <button>Start</button>
+      <p class="gameBackground">
+        The city is in danger and needs your help, the evil dinosaurs have
+        arrived
+        <img src="img/dinos.png" alt="Image of the evil dinosaurs" />
+      </p>
+      <p class="gameBackground">
+        Become the hero and defeat the dino's by placing bombs, before they
+        reach the city and bring chaos to its citizens <br /><img
+          src="img/Owlet_Monster_Run_6.png"
+          alt="Image of the hero"
+        /><img src="img/Owlet_Monster_Run_6.png" alt="Image of the hero" />
+      </p>
+      <p id="instructions">
+        Instructions:<br />
+        Start off with 75 gold and 20 health, gain coins by running over them
+        and by defeating dino's, each bomb has a cost of 10 coins<br />
+        And be carefull don't go running into dinosaurs, I heard they hurt
+      </p>
+    </div>
+    <div id="game-screen" class="screen" style="display: none">
+      <canvas
+        width="1000"
+        height="720"
+        style="background: url(./img/game\ map.png)"
+        id="canvas"
+      ></canvas>
+    </div>
+    <div id="game-over" class="screen" style="display: none">
+      <h2>Game Over</h2>
+      <button>Play Again</button>
+    </div>
+    <footer>
+      <h4>Controls</h4>
+      <img src="img/keyboard.png" alt="Keyboard Image" class="image" />
+      <h3>W, A, S, D, or Arrow keys to move and spacebar to place bombs</h3>
+    </footer>
 
     <script src="bomb.js"></script>
     <script src="gold.js"></script>

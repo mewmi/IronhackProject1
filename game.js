@@ -1,19 +1,16 @@
 class Game {
-  constructor() {
+  constructor(gameScreenElement, gameOverElement) {
+    this.gameScreenElement = gameScreenElement;
+    this.gameOverElement = gameOverElement;
+
     this.canvasElement = document.querySelector("canvas");
     this.context = this.canvasElement.getContext("2d");
 
-    this.player = new Player(this);
-    this.enemies = [new Enemy(this)];
-    this.gold = [new Gold(this), new Gold(this)];
-    this.bombs = [];
     this.enableControls();
 
-    this.money = 75;
-    this.score = 20;
-
     this.isRunning = false;
-    this.frame = 0;
+
+    this.reset();
   }
 
   enableControls() {
@@ -29,6 +26,18 @@ class Game {
           this.player.x += 9;
           break;
         case "KeyA":
+          this.player.x -= 9;
+          break;
+        case "ArrowUp":
+          this.player.y -= 9;
+          break;
+        case "ArrowDown":
+          this.player.y += 9;
+          break;
+        case "ArrowRight":
+          this.player.x += 9;
+          break;
+        case "ArrowLeft":
           this.player.x -= 9;
           break;
         case "Space":
@@ -51,7 +60,7 @@ class Game {
   }
 
   possiblyAddEnemy() {
-    if (Math.random() < 0.007) {
+    if (Math.random() < 0.008) {
       this.enemies.push(new Enemy(this));
     }
   }
@@ -59,6 +68,17 @@ class Game {
     if (Math.random() < 0.008) {
       this.gold.push(new Gold(this));
     }
+  }
+  reset() {
+    this.player = new Player(this);
+    this.enemies = [new Enemy(this)];
+    this.gold = [new Gold(this), new Gold(this)];
+    this.bombs = [];
+
+    this.money = 75;
+    this.score = 20;
+
+    this.frame = 0;
   }
 
   runLogic() {
@@ -69,6 +89,10 @@ class Game {
     }
     for (const coins of this.gold) {
       coins.runLogic();
+    }
+    if (this.score <= 0) {
+      this.isRunning = false;
+      this.lose();
     }
   }
 
@@ -99,14 +123,20 @@ class Game {
     this.drawScore();
     this.drawMoney();
   }
+  lose() {
+    this.gameScreenElement.style.display = "none";
+    this.gameOverElement.style.display = "";
+    clearInterval(this.intervalId);
+  }
 
   start() {
     this.isRunning = true;
     this.loop();
+    this.reset();
   }
 
   loop() {
-    setInterval(() => {
+    this.intervalId = setInterval(() => {
       if (this.isRunning) {
         this.runLogic();
         this.draw();

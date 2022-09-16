@@ -2,15 +2,94 @@ html,
 body {
   width: 99%;
   height: 99%;
-}
-
-body {
-  background-color: rgb(215, 161, 83);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-image: url("img/jan-kopriva-a3pKxtQ0OdM-unsplash.jpg");
+  background-size: 2700px;
+  margin: auto;
+  text-align: center;
 }
 
 canvas {
   box-shadow: 10px 10px 15px black;
+}
+
+.screen {
+  width: 1000px;
+  height: 720px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 90px 30px 90px;
+}
+
+footer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: 450px;
+  background-color: white;
+  opacity: 0.8;
+}
+.image {
+  position: inherit;
+  width: 70%;
+  height: auto;
+}
+h1 {
+  font-size: 38px;
+}
+h2 {
+  font-size: 64px;
+}
+h4 {
+  font-size: 32px;
+}
+#instructions {
+  font-size: 18px;
+  margin: 0.5px;
+  font-weight: bold;
+  padding-top: 16px;
+  opacity: 0.7;
+  background: #5e5df0;
+  border-radius: 999px;
+  box-shadow: #5e5df0 0 10px 20px -10px;
+  box-sizing: border-box;
+  font-weight: 700;
+  line-height: 24px;
+  outline: 0 solid transparent;
+  padding: 10px 10px;
+}
+.gameBackground {
+  font-size: 24px;
+  margin: 0.5px;
+  font-weight: bold;
+  padding-top: 16px;
+  opacity: 0.7;
+  background: #5e5df0;
+  border-radius: 999px;
+  box-shadow: #5e5df0 0 10px 20px -10px;
+  box-sizing: border-box;
+  font-weight: 700;
+  line-height: 24px;
+  outline: 0 solid transparent;
+  padding: 10px 10px;
+}
+
+button {
+  background: #5e5df0;
+  border-radius: 999px;
+  box-shadow: #5e5df0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 0.9;
+  outline: 0 solid transparent;
+  padding: 16px 80px;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
 }

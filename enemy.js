@@ -90,8 +90,7 @@ class Enemy {
         if (isIntBomb) {
           bomb.dissapear();
           this.dissapear();
-          console.log(bomb);
-          // this.game.isRunning = false;
+          this.game.money += 2;
         }
       }
     }
