@@ -1,7 +1,8 @@
 class Game {
-  constructor(gameScreenElement, gameOverElement) {
+  constructor(gameScreenElement, gameOverElement, scoreElement) {
     this.gameScreenElement = gameScreenElement;
     this.gameOverElement = gameOverElement;
+    this.scoreElement = scoreElement;
 
     this.canvasElement = document.querySelector("canvas");
     this.context = this.canvasElement.getContext("2d");
@@ -77,6 +78,7 @@ class Game {
 
     this.money = 75;
     this.score = 20;
+    this.time = 0;
 
     this.frame = 0;
   }
@@ -97,14 +99,25 @@ class Game {
   }
 
   drawScore() {
-    this.context.font = "32px sans-serif";
+    this.context.font = "24px sans-serif";
     this.context.fillStyle = "black";
-    this.context.fillText(this.score, 60, 30);
+    this.context.fillText(this.score, 80, 30);
   }
   drawMoney() {
-    this.context.font = "32px sans-serif";
+    this.context.font = "24px sans-serif";
     this.context.fillStyle = "yellow";
-    this.context.fillText(this.money, 130, 30);
+    this.context.fillText(this.money, 180, 30);
+  }
+
+  drawTime() {
+    this.context.font = "24px sans-serif";
+    this.context.fillStyle = "black";
+    this.context.fillText(this.time, 290, 30);
+  }
+  drawText() {
+    this.context.fillText("Health:", 1, 30);
+    this.context.fillText("Gold:", 120, 30);
+    this.context.fillText("Score:", 220, 30);
   }
 
   draw() {
@@ -122,6 +135,8 @@ class Game {
     }
     this.drawScore();
     this.drawMoney();
+    this.drawTime();
+    this.drawText();
   }
   lose() {
     this.gameScreenElement.style.display = "none";
@@ -140,6 +155,7 @@ class Game {
       if (this.isRunning) {
         this.runLogic();
         this.draw();
+        this.time += 1;
       }
     }, 1000 / 60);
   }
